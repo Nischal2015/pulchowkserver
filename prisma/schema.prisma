@@ -9,3 +9,51 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Group {
+  id      Int       @id @default(autoincrement())
+  name    Grp
+  Student Student[]
+}
+
+model Program {
+  id      Int       @id @default(autoincrement())
+  name    Prog
+  Student Student[]
+}
+
+model Student {
+  id         Int     @id @default(autoincrement())
+  firstname  String
+  middlename String
+  lastname   String
+  program    Program @relation(fields: [programId], references: [id])
+  programId  Int
+  group      Group   @relation(fields: [groupId], references: [id])
+  groupId    Int
+  year       String
+}
+
+enum Prog {
+  BCT
+  BEI
+  BEX
+  BEL
+  BME
+  BAR
+  BAE
+  BAS
+  BCE
+  BCH
+}
+
+enum Grp {
+  A
+  B
+  C
+  D
+  E
+  F
+  G
+  H
+}
