@@ -8,4 +8,7 @@ import { StudentService } from './student.service';
   controllers: [StudentController],
   providers: [StudentService],
 })
+/**
+ * Class that combines student controllers and providers
+ */
 export class StudentModule {}

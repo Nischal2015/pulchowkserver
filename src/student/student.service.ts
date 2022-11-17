@@ -4,10 +4,18 @@ import { map } from 'rxjs';
 import { StudentDto } from './dto';
 import { studentJsonFormatAPIData } from 'utils/studentJsonFormatter';
 
+/**
+ * Class to implement student data getting logic
+ */
 @Injectable()
 export class StudentService {
   constructor(private httpService: HttpService) {}
 
+  /**
+   * Function to get students
+   * @param dto The search parameters to college api
+   * @returns The data of the students
+   */
   getStudentsByYearBatchGroup(dto: StudentDto) {
     const { prog, batch, group } = dto;
     const formData = new URLSearchParams();

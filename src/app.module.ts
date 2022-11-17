@@ -10,4 +10,8 @@ import { StudentModule } from './student/student.module';
   providers: [StudentService],
   exports: [HttpModule],
 })
+
+/**
+ * Class that combines app controllers and providers
+ */
 export class AppModule {}
