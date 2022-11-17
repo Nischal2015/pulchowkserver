@@ -10,6 +10,6 @@ async function bootstrap() {
     origin: '*',
     preflightContinue: false,
   });
-  await app.listen(5500);
+  await app.listen(process.env.PORT || 80);
 }
 bootstrap();
