@@ -1,24 +1,23 @@
-export const studentJsonFormatAPIData = (datas) => {
+/**
+ * Returns the object from name array
+ * @param name An array representing a fullname
+ * @returns The fullname in object form
+ */
+const getFullName = (name: string[]) => ({
+  firstname: name[0],
+  middlename: name.length < 3 ? '' : name[1],
+  lastname: name[name.length - 1],
+});
+
+/**
+ * Returns the student data
+ * @param datas Student data returned by college api
+ * @returns Student data in proper object form
+ */
+export const studentJsonFormatAPIData = (datas: string[][]) => {
   return datas.map((data) => {
     const fullName = data[3].split(' ');
-    let name = {} as {
-      firstname: string;
-      middlename: string;
-      lastname: string;
-    };
-    if (fullName.length === 3) {
-      name = {
-        firstname: fullName[0],
-        middlename: fullName[1],
-        lastname: fullName[2],
-      };
-    } else {
-      name = {
-        firstname: fullName[0],
-        middlename: '',
-        lastname: fullName[1],
-      };
-    }
+    const name = getFullName(fullName);
 
     return {
       ...name,
