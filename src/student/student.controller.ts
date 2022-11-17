@@ -1,16 +1,16 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { StudentService } from './student.service';
 // import { StudentDto } from './dto';
-import { IsString } from 'class-validator';
+import { IsNotBlankString } from '@nestjsi/class-validator';
 
 class StudentDto {
-  @IsString()
+  @IsNotBlankString()
   prog: string;
 
-  @IsString()
+  @IsNotBlankString()
   batch: string;
 
-  @IsString()
+  @IsNotBlankString()
   group: string;
 }
 

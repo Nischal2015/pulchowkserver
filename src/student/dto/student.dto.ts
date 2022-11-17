@@ -1,11 +1,11 @@
-import { IsString } from 'class-validator';
+import { IsNotBlankString } from '@nestjsi/class-validator';
 export class StudentDto {
-  @IsString()
+  @IsNotBlankString()
   prog: string;
 
-  @IsString()
+  @IsNotBlankString()
   batch: string;
 
-  @IsString()
+  @IsNotBlankString()
   group: string;
 }
