@@ -5,7 +5,7 @@ import { StudentDto } from './dto';
 /**
  * Class that defines the student controller
  */
-@Controller('student')
+@Controller('api/students')
 export class StudentController {
   constructor(private studentService: StudentService) {}
 
