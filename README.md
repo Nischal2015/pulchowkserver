@@ -1,73 +1,111 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+---
+Title: Pulchowk student api wrapper 👋
+Author: Nischal Shakya
+Date: November 18, 2022
+---
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# Pulchowk Student api Wrapper
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Introduction
 
-## Description
+This is the api wrapper around the [Student api](http://assmnt.pcampus.edu.np/api/students/test.php) provided by Pulchowk Campus which provides easy to use api than what is provided by the college.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[NestJS](https://nestjs.com/) was used for building this API as it provides very clean architecture with how the files are arranged. Since, Typescript support is available by default, it provides very good developer experience.
 
-## Installation
+![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)
+![RxJS](https://img.shields.io/badge/rxjs-%23B7178C.svg?style=for-the-badge&logo=reactivex&logoColor=white)
 
-```bash
-$ npm install
+## Table of Contents
+
+- ✨ [Demo](#demo)
+- 🚀 [Usage](#usage)
+  - [API Endpoints](#api-endpoints)
+- 👏 [Contributing](#contributing)
+  - ⚙️ [Installation](#installation)
+  - 👨‍💻 [Development scripts](#development-scripts)
+- 📝 [License](#license)
+
+## Demo
+
+This simple demo is presented using Insomnia. It gives an idea of the type of data that is returned by the API.
+
+![demo](https://raw.githubusercontent.com/Nischal2015/pulchowkserver/development/assets/demo.gif)
+
+## Usage
+
+The base URL of the api is provides as `https://pul-stu-server.onrender.com/api`.
+
+The request parameters are to be used with following values
+
+- `prog` => To input Program Code, values can be **BCT**, **BEI**, **BEX**, **BEL**, **BME**, **BAR**, **BAE**, **BAS**, **BCE** or **BCH**
+- `batch` => To input Batch, values can be **074** or **075** or so on.
+- `group` => To input Group, values can be **A**, **B**, **C** or **D** or so on.
+
+### API Endpoints
+
+#### POST
+
+- `/students`
+  > Returns all the students according to `prog`, `batch` and `group`.
+
+#### Example
+
+```javascript
+// with axios
+axios.post('https://pul-stu-server.onrender.com/api/students/', {
+  prog: "BCT",
+  batch: "075",
+  group: "C",
+})
+...
+
+// with fetch
+await fetch('https://pul-stu-server.onrender.com/api/students/', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    prog: 'BCT',
+    batch: '075',
+    group: 'C',
+  }),
+})
+...
 ```
 
-## Running the app
+## Contributing
+
+Make sure you have [Node](https://nodejs.org/en/download/) installed on your PC. We recommend using the LTS version.
+
+### Installation
+
+Run the following script to install all the dependencies.
+
+```bash
+npm install
+# or
+yarn
+```
+
+### Development scripts
 
 ```bash
 # development
-$ npm run start
+yarn start
 
 # watch mode
-$ npm run start:dev
+yarn start:dev
+
+# build
+yarn build
 
 # production mode
-$ npm run start:prod
+yarn start:prod
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+[MIT](https://github.com/Nischal2015/pulchowkserver/blob/development/LICENSE)
+
+-the end -
