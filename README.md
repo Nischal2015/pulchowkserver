@@ -1,14 +1,14 @@
 ---
-Title: Pulchowk student api wrapper 👋
+Title: Pulchowk student API wrapper 👋
 Author: Nischal Shakya
 Date: November 18, 2022
 ---
 
-# Pulchowk Student api Wrapper
+# Pulchowk Student API Wrapper
 
 ## Introduction
 
-This is the api wrapper around the [Student api](http://assmnt.pcampus.edu.np/api/students/test.php) provided by Pulchowk Campus which provides easy to use api than what is provided by the college.
+This is the api wrapper around the [Student API](http://assmnt.pcampus.edu.np/api/students/test.php) provided by Pulchowk Campus which provides easy to use API than what is provided by the college.
 
 [NestJS](https://nestjs.com/) was used for building this API as it provides very clean architecture with how the files are arranged. Since, Typescript support is available by default, it provides very good developer experience.
 
@@ -18,6 +18,8 @@ This is the api wrapper around the [Student api](http://assmnt.pcampus.edu.np/ap
 ## Table of Contents
 
 - ✨ [Demo](#demo)
+- :no_good: [Problem](#problem)
+- 💡 [Solution](#solution)
 - 🚀 [Usage](#usage)
   - [API Endpoints](#api-endpoints)
 - 👏 [Contributing](#contributing)
@@ -31,9 +33,73 @@ This simple demo is presented using Insomnia. It gives an idea of the type of da
 
 ![demo](https://raw.githubusercontent.com/Nischal2015/pulchowkserver/development/assets/demo.gif)
 
+## Problem
+
+The API provided by college require the use of `URLSearchParams` to perform the required POST request.
+
+```javascript
+const formData = new URLSearchParams();
+formData.append('prog', prog);
+formData.append('batch', batch);
+formData.append('group', group);
+```
+
+This is quite cumbersome as of today.
+
+Similarly, the response of the API is also not what you expect.
+
+```
+# API response
+[
+  ["075","BCT","123","JOHN DOE"],
+  ["075","BCT","456","FIRSTNAME LASTNAME"],
+  ["075","BCT","789","FIRSTNAME MIDDLENAME LASTNAME"],
+  ...
+]
+```
+
+This requires the users to put extra formatting logic to get the data in the way they want.
+
+## Solution
+
+The API which is easy to use and returns the response as expected.
+
+```
+# API response
+[
+  {
+  	"firstname": "JOHN",
+  	"middlename": "",
+  	"lastname": "DOE",
+  	"batch": "075",
+  	"prog": "BCT",
+  	"roll": "123"
+  },
+  {
+  	"firstname": "FIRSTNAME",
+  	"middlename": "",
+  	"lastname": "LASTNAME",
+  	"batch": "075",
+  	"prog": "BCT",
+  	"roll": "456"
+  },
+  {
+  	"firstname": "FIRSTNAME",
+  	"middlename": "MIDDLENAME",
+  	"lastname": "LASTNAME",
+  	"batch": "075",
+  	"prog": "BCT",
+  	"roll": "789"
+  },
+  ...
+]
+```
+
+The usage is listed below.
+
 ## Usage
 
-The base URL of the api is provides as `https://pul-stu-server.onrender.com/api`.
+The base URL of the API is provides as `https://pul-stu-server.herokuapp.com/api/`.
 
 The request parameters are to be used with following values
 
@@ -52,7 +118,7 @@ The request parameters are to be used with following values
 
 ```javascript
 // with axios
-axios.post('https://pul-stu-server.onrender.com/api/students/', {
+axios.post('https://pul-stu-server.herokuapp.com/api/students/', {
   prog: "BCT",
   batch: "075",
   group: "C",
@@ -60,7 +126,7 @@ axios.post('https://pul-stu-server.onrender.com/api/students/', {
 ...
 
 // with fetch
-await fetch('https://pul-stu-server.onrender.com/api/students/', {
+await fetch('https://pul-stu-server.herokuapp.com/api/students/', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
