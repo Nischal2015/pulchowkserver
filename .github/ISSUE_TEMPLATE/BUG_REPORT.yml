@@ -1,0 +1,59 @@
+name: '🐞 Bug Report'
+description: Create a report to help us improve
+labels: ['type: bug', 'status: unconfirmed']
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 🐞 Bug Report
+
+        Thank you for taking the time to make this project better by reporting a bug!
+
+        Please fill out the following sections with as much detail as you can.
+
+  - type: textarea
+    attributes:
+      label: Description
+      description: A clear and concise description of what the bug is.
+      placeholder: Be as descriptive as possible. Feel free to include screenshots, logs, or code snippets.
+    validations:
+      required: true
+
+  - type: input
+    id: reproduction-link
+    attributes:
+      label: Reproduction link
+      description: A link to a reproduction repository or a minimal code snippet that demonstrates the bug (Github repository, CodeSandbox, etc.)
+      placeholder: 'https://github.com/username/repository-name'
+
+  - type: textarea
+    id: expected-result
+    attributes:
+      label: Expected result
+      description: A clear and concise description of what you expected to happen.
+      placeholder: 'I expected to see ...'
+
+  - type: textarea
+    id: actual-result
+    attributes:
+      label: Actual result
+      description: A clear and concise description of what actually happened.
+      placeholder: 'Instead, I saw ...'
+
+  - type: textarea
+    id: other-information
+    attributes:
+      label: Other information
+      description: |
+        Any other information that you think is relevant to the bug report. This might include the lines of code that you have identified as causing the bug, and potential solutions (and your opinions on their merits).
+      placeholder: |
+        I think this might be caused by...
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Final checks
+      options:
+        - label: I have provided steps to reproduce the issue.
+          required: true
