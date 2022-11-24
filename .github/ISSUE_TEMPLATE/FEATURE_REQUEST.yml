@@ -1,0 +1,42 @@
+name: '🚀 Feature request'
+description: Suggest an idea for improving
+labels: 'type: enhancement'
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 🚀 Feature request
+        Thanks for taking the time to fill out this feature request!
+
+        Please fill out as much of the template below as you can. If you're unsure whether the feature request is relevant, feel free to create an issue anyway. We'll figure it out together.
+
+  - type: textarea
+    attributes:
+      label: 'Is your feature request related to a problem? Please describe.'
+      description: 'A clear and concise description of what the problem is.'
+      placeholder: "I'm always frustrated when [...]"
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: "Describe the solution you'd like"
+      description: 'A clear and concise description of what you want to happen.'
+      placeholder: 'I would like to see [...]'
+
+  - type: textarea
+    attributes:
+      label: "Describe alternatives you've considered"
+      description: "A clear and concise description of any alternative solutions or features you've considered."
+      placeholder: 'I have considered [...]'
+
+  - type: textarea
+    attributes:
+      label: 'Additional context'
+      description: 'Add any other context or screenshots about the feature request here.'
+      placeholder: 'Be as descriptive as possible. Consider attaching screenshots or links to other issues.'
+
+  - type: textarea
+    attributes:
+      label: 'Other solutions you have considered'
