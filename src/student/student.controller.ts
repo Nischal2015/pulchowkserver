@@ -19,6 +19,12 @@ export class StudentController {
     return this.studentService.getStudentsByYearBatchGroup(dto);
   }
 
+  /**
+   * Function to get students by year, batch and group based on roll number
+   * @param roll Roll number of the student
+   * @param dto The api parameters to pass
+   * @returns Student by year, batch, group and roll
+   */
   @Post(':roll')
   getStudentByRollNumber(@Param('roll') roll: string, @Body() dto: StudentDto) {
     return this.studentService.getStudentByRollNumber(roll, dto);
