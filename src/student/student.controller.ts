@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Param, Post } from '@nestjs/common';
 import { StudentService } from './student.service';
 import { StudentDto } from './dto';
 
@@ -17,5 +17,10 @@ export class StudentController {
   @Post()
   getStudentsByYearBatchGroup(@Body() dto: StudentDto) {
     return this.studentService.getStudentsByYearBatchGroup(dto);
+  }
+
+  @Post(':roll')
+  getStudentByRollNumber(@Param('roll') roll: string, @Body() dto: StudentDto) {
+    return this.studentService.getStudentByRollNumber(roll, dto);
   }
 }

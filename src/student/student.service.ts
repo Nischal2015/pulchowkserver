@@ -31,4 +31,16 @@ export class StudentService {
       })
       .pipe(map((response) => studentJsonFormatAPIData(response.data)));
   }
+
+  /**
+   * Function to get student by roll number
+   * @param roll The roll number of the student
+   * @param dto The search parameters to college api
+   * @returns The data of the student by roll number
+   */
+  getStudentByRollNumber(roll: string, dto: StudentDto) {
+    return this.getStudentsByYearBatchGroup(dto).pipe(
+      map((data) => data.filter((student) => student.roll === roll)),
+    );
+  }
 }
