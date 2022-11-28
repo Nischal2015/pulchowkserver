@@ -60,6 +60,8 @@ Similarly, the response of the API is also not what you expect.
 
 This requires the users to put extra formatting logic to get the data in the way they want.
 
+> :weary: I can't seem to get the student of particular `prog`, `batch`, `group` by their roll number.
+
 ## Solution
 
 The API which is easy to use and returns the response as expected.
@@ -95,6 +97,8 @@ The API which is easy to use and returns the response as expected.
 ]
 ```
 
+You want to get data of specific student. Don't worry. We got you covered.
+
 The usage is listed below.
 
 ## Usage
@@ -112,7 +116,7 @@ The request parameters are to be used with following values
 #### POST
 
 - `/students`
-  > Returns all the students according to `prog`, `batch` and `group`.
+  > Returns all the students according to `prog`, `batch` and `group`
 
 #### Example
 
@@ -127,6 +131,35 @@ axios.post('https://pul-stu-server.herokuapp.com/api/students/', {
 
 // with fetch
 await fetch('https://pul-stu-server.herokuapp.com/api/students/', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    prog: 'BCT',
+    batch: '075',
+    group: 'C',
+  }),
+})
+...
+```
+
+- <code>/students/<i>&lt;roll-number&gt;</i></code>
+  > Returns the student according to `prog`, `batch` and `group` by `roll`
+
+#### Example
+
+```javascript
+// with axios
+axios.post('https://pul-stu-server.herokuapp.com/api/students/012', {
+  prog: "BCT",
+  batch: "075",
+  group: "C",
+})
+...
+
+// with fetch
+await fetch('https://pul-stu-server.herokuapp.com/api/students/345', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
