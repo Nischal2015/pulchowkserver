@@ -36,4 +36,3 @@ lerna-debug.log*
 
 # Environment variables
 .env
-.vercel

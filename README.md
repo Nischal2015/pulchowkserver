@@ -103,7 +103,7 @@ The usage is listed below.
 
 ## Usage
 
-The base URL of the API is provides as `https://pul-stu-server.herokuapp.com/api/`.
+The base URL of the API is provides as `https://pulchowkserver.vercel.com/api/`.
 
 The request parameters are to be used with following values
 
@@ -122,7 +122,7 @@ The request parameters are to be used with following values
 
 ```javascript
 // with axios
-axios.post('https://pul-stu-server.herokuapp.com/api/students/', {
+axios.post('https://pulchowkserver.vercel.com/api/students/', {
   prog: "BCT",
   batch: "075",
   group: "C",
@@ -130,7 +130,7 @@ axios.post('https://pul-stu-server.herokuapp.com/api/students/', {
 ...
 
 // with fetch
-await fetch('https://pul-stu-server.herokuapp.com/api/students/', {
+await fetch('https://pulchowkserver.vercel.com/api/students/', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -151,7 +151,7 @@ await fetch('https://pul-stu-server.herokuapp.com/api/students/', {
 
 ```javascript
 // with axios
-axios.post('https://pul-stu-server.herokuapp.com/api/students/012', {
+axios.post('https://pulchowkserver.vercel.com/api/students/012', {
   prog: "BCT",
   batch: "075",
   group: "C",
@@ -159,7 +159,7 @@ axios.post('https://pul-stu-server.herokuapp.com/api/students/012', {
 ...
 
 // with fetch
-await fetch('https://pul-stu-server.herokuapp.com/api/students/345', {
+await fetch('https://pulchowkserver.vercel.com/api/students/345', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

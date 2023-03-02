@@ -2,7 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { map } from 'rxjs';
 import { StudentDto } from './dto';
-import { studentJsonFormatAPIData } from 'utils/studentJsonFormatter';
+import { studentJsonFormatAPIData } from '../../utils/studentJsonFormatter';
 
 /**
  * Class to implement student data getting logic
